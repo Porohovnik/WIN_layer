@@ -14,9 +14,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
 #=======================================================================================================================
 # Add build options
 #=======================================================================================================================
-option(TEST_BUILD_OBJECT_LIB "Build object library (not available in Xcode)" OFF)
-option(TEST_BUILD_STATIC_LIB "Build static library                         " ON)
-option(TEST_BUILD_SHARED_LIB "Build shared library                         " OFF)
+option(WIN_layer_BUILD_OBJECT_LIB "Build object library (not available in Xcode)" OFF)
+option(WIN_layer_BUILD_STATIC_LIB "Build static library                         " ON)
+option(WIN_layer_BUILD_SHARED_LIB "Build shared library                         " OFF)
 
 if(DEFINED BUILD_SHARED_LIBS)
     set(MYLIB_SHARED_LIBS ${BUILD_SHARED_LIBS})
@@ -49,7 +49,7 @@ endif()
 #=======================================================================================================================
 # DEFINE LIBS
 #=======================================================================================================================
-add_subdirectory( ${PROJECT_SOURCE_DIR}/contrib/glfw-master )
+add_subdirectory( ${PROJECT_SOURCE_DIR}/contrib/glfw)
 
 #=======================================================================================================================
 # DEFINE FILE
@@ -58,7 +58,7 @@ foreach(NAME IN LISTS LIBRARY_TYPE_NAME)
     target_sources(${NAME} PRIVATE ${PUBLIC_HEADERS_FILES} ${SOURCE_LIB})
     target_include_directories(${NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-    target_include_directories(${NAME} PRIVATE ${PROJECT_SOURCE_DIR}/contrib/glfw-master/include)
+    target_include_directories(${NAME} PRIVATE ${PROJECT_SOURCE_DIR}/contrib/glfw/include)
     target_link_libraries(${NAME} PRIVATE glfw)
 endforeach()
 
