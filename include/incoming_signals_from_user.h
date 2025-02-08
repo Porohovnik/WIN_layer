@@ -46,7 +46,6 @@ public:
     int width=0;
     int height=0;
     bool isChangeSize=true;//при создание окна можно считать что оно изменила свои размеры)
-    bool Change_wind=true;//для определения изменений
 
     double yoffset=0.0;
 
